@@ -87,7 +87,7 @@ func (q *Queue) Put(jid, klass string, data interface{}, delay, priority int, ta
 	}
 
 	return redis.String(q.cli.Do(
-		"qless", 0, "put", timestamp(), q.Name, jid, klass,
+		"qless", 0, "put", timestamp(),"", q.Name, jid, klass,
 		marshal(data),
 		delay, "priority", priority,
 		"tags", marshal(tags), "retries",
