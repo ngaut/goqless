@@ -45,18 +45,6 @@ func init() {
 	workerNameStr = fmt.Sprintf("%s-%d", hn, os.Getpid())
 }
 
-func GetCurrentDir() (string, error) {
-	dir, err := osext.Executable()
-	if err != nil {
-		return "", err
-	}
-
-	dir = string(dir[:len(dir)-1])
-	pos := strings.LastIndex(dir, "/")
-	dir = string(dir[:pos])
-	return dir, nil
-}
-
 func (s *StringSlice) UnmarshalJSON(data []byte) error {
 	// because tables and arrays are equal in LUA,
 	// an empty array would be presented as "{}".
